@@ -1,4 +1,3 @@
-import java.awt.Graphics;
 import java.awt.*;
 public class NewSwingUI implements UIContext {
   private Graphics graphics;
@@ -14,6 +13,7 @@ public class NewSwingUI implements UIContext {
   public  void setGraphics(Graphics graphics) {
     this.graphics = graphics;
   }
+  @Override
   public void drawLabel(String s, Point p) {
     if (p != null) {
       if (s != null) {
@@ -23,6 +23,7 @@ public class NewSwingUI implements UIContext {
     int length = graphics.getFontMetrics().stringWidth(s);
     graphics.drawString("_", (int)p.getX() + length, (int)p.getY());
   }
+  @Override
   public void drawLine(Point point1,  Point point2) {
     int i1 = 0;
     int i2 = 0;
@@ -41,5 +42,12 @@ public class NewSwingUI implements UIContext {
       graphics.drawLine(i1, i2, i3, i4);
     }
   }
- 
+  @Override
+  public void drawCircle(Point center, int radius) {
+    if (center != null) {
+      int x = Math.round((float) (center.getX()));
+      int y = Math.round((float) (center.getY()));
+      graphics.drawOval(x - radius, y - radius, 2 * radius, 2 * radius);
+    }
+  }
 }

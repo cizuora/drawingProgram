@@ -1,8 +1,8 @@
 import java.util.*;
 public class UndoManager {
   private static Model model;
-  private Stack history;
-  private Stack redoStack;
+  private final Stack history;
+  private final Stack redoStack;
   private Command currentCommand;
   public UndoManager() {
     history = new Stack();

@@ -1,14 +1,15 @@
-import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.*;
 public class SaveButton  extends JButton implements ActionListener {
   protected View view;
-  private UndoManager undoManager;
+  private final UndoManager undoManager;
   public SaveButton(UndoManager undoManager, View jFrame) {
     super("Save");
     this.undoManager = undoManager;
     addActionListener(this);
     view = jFrame;
   }
+  @Override
   public void actionPerformed(ActionEvent event) {
     String string = view.getFileName();
     if (string == null) {

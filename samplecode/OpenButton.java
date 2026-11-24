@@ -1,14 +1,15 @@
-import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.*;
 public class OpenButton  extends JButton implements ActionListener {
-  protected View view;
-  private UndoManager undoManager;
+  protected final View view;
+  private final UndoManager undoManager;
   public OpenButton(UndoManager undoManager, View jFrame) {
     super("Open");
     this.undoManager = undoManager;
     addActionListener(this);
-    view = jFrame;
+    this.view = jFrame;
   }
+  @Override
   public void actionPerformed(ActionEvent e){
     String string = JOptionPane.showInputDialog(view, "Please type new file name");
     OpenCommand command = new OpenCommand(string);

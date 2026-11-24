@@ -1,20 +1,20 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import javax.swing.*;
 class View extends JFrame {
   private UIContext uiContext;
-  private JPanel drawingPanel;
-  private JPanel buttonPanel;
-  private JPanel filePanel;
-  private JButton lineButton;
-  private JButton deleteButton;
-  private JButton labelButton;
-  private JButton selectButton;
-  private JButton saveButton;
-  private JButton openButton;
-  private JButton undoButton;
-  private JButton redoButton;
+  private final JPanel drawingPanel;
+  private final JPanel buttonPanel;
+  private final JButton lineButton;
+  private final JButton deleteButton;
+  private final JButton labelButton;
+  private final JButton selectButton;
+  private final JButton saveButton;
+  private final JButton openButton;
+  private final JButton undoButton;
+  private final JButton redoButton;
+  private final JButton circleButton;
   private static UndoManager undoManager;
     private String fileName;
   // other buttons to be added as needed;
@@ -38,6 +38,7 @@ class View extends JFrame {
     public DrawingPanel() {
       setLayout(null);
     }
+    @Override
     public void paintComponent(Graphics g) {
       super.paintComponent(g);
       (NewSwingUI.getInstance()).setGraphics(g);
@@ -52,16 +53,19 @@ class View extends JFrame {
         ((Item) enumeration.nextElement()).render(uiContext);
       }
     }
+    @Override
     public void addMouseListener(MouseListener newListener) {
       removeMouseListener(currentMouseListener);
       currentMouseListener =  newListener;
       super.addMouseListener(newListener);
     }
+    @Override
     public void addKeyListener(KeyListener newListener) {
       removeKeyListener(currentKeyListener);
       currentKeyListener =  newListener;
       super.addKeyListener(newListener);
     }
+    @Override
     public void addFocusListener(FocusListener newListener) {
       removeFocusListener(currentFocusListener);
       currentFocusListener =  newListener;
@@ -80,6 +84,7 @@ class View extends JFrame {
     super("Drawing Program 1.1  Untitled");
     fileName = null;
     addWindowListener(new WindowAdapter() {
+      @Override
       public void windowClosing(WindowEvent event) {
         System.exit(0);
       }
@@ -92,6 +97,7 @@ class View extends JFrame {
     contentpane.add(drawingPanel);
     lineButton= new LineButton(undoManager, this, drawingPanel);
     labelButton = new LabelButton(undoManager, this, drawingPanel);
+    circleButton = new CircleButton(undoManager, this, drawingPanel);
     selectButton= new SelectButton(undoManager, this, drawingPanel);
     deleteButton= new DeleteButton(undoManager);
     saveButton= new SaveButton(undoManager, this);
@@ -100,6 +106,7 @@ class View extends JFrame {
     redoButton = new RedoButton(undoManager);
     buttonPanel.add(lineButton);
     buttonPanel.add(labelButton);
+    buttonPanel.add(circleButton);
     buttonPanel.add(selectButton);
     buttonPanel.add(deleteButton);
     buttonPanel.add(saveButton);
