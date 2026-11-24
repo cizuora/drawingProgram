@@ -32,6 +32,14 @@ public class Line extends Item {
   public Point getPoint2() {
     return point2;
   }
+  public void translate(int dx, int dy) {
+    if (point1 != null) {
+      point1 = new Point(point1.x + dx, point1.y + dy);
+    }
+    if (point2 != null) {
+      point2 = new Point(point2.x + dx, point2.y + dy);
+    }
+  }
   public String toString() {
     return "Line  from " + point1 + " to " + point2;
   }

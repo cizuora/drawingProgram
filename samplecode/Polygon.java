@@ -50,6 +50,13 @@ public class Polygon extends Item {
         }
     }
 
+    @Override
+    public void translate(int dx, int dy) {
+        for (int i = 0; i < points.length; i++) {
+            points[i] = new Point(points[i].x + dx, points[i].y + dy);
+        }
+    }
+
     private boolean rayIntersectsSegment(Point p, Point p1, Point p2) {
         if (p1.y > p2.y) {
             Point temp = p1;

@@ -19,6 +19,9 @@ public class Label extends Item {
  public void render(UIContext uiContext) {
    uiContext.drawLabel(text, startingPoint);
   }
+  public void translate(int dx, int dy) {
+    startingPoint = new Point(startingPoint.x + dx, startingPoint.y + dy);
+  }
   public String getText() {
     return text;
   }

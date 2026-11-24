@@ -12,6 +12,7 @@ public abstract class Item implements Serializable {
     return ((double) (Math.sqrt(xDifference * xDifference + yDifference * yDifference)));
   }
   public  abstract void render(UIContext uiContext);
+  public abstract void translate(int dx, int dy);
     //uiContext.draw(this);
   //}
 }

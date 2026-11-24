@@ -46,6 +46,12 @@ public class Circle extends Item {
         }
     }
     @Override
+    public void translate(int dx, int dy) {
+        if (center != null) {
+            center = new Point(center.x + dx, center.y + dy);
+        }
+    }
+    @Override
     public String toString() {
         return "Circle with center at " + center + " and radius " + radius;
     }

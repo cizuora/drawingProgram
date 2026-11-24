@@ -45,6 +45,13 @@ public class Model {
     selectedList.removeAllElements();
     view.refresh();
   }
+  public void moveItems(Vector items, int dx, int dy) {
+    Enumeration enumeration = items.elements();
+    while (enumeration.hasMoreElements()) {
+      ((Item) enumeration.nextElement()).translate(dx, dy);
+    }
+    view.refresh();
+  }
   public void addItem(Item item) {
     itemList.add(item);
     view.refresh();
