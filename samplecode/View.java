@@ -15,6 +15,7 @@ class View extends JFrame {
   private final JButton undoButton;
   private final JButton redoButton;
   private final JButton circleButton;
+  private final JButton polygonButton;
   private static UndoManager undoManager;
     private String fileName;
   // other buttons to be added as needed;
@@ -98,6 +99,7 @@ class View extends JFrame {
     lineButton= new LineButton(undoManager, this, drawingPanel);
     labelButton = new LabelButton(undoManager, this, drawingPanel);
     circleButton = new CircleButton(undoManager, this, drawingPanel);
+    polygonButton = new PolygonButton(undoManager, this, drawingPanel);
     selectButton= new SelectButton(undoManager, this, drawingPanel);
     deleteButton= new DeleteButton(undoManager);
     saveButton= new SaveButton(undoManager, this);
@@ -113,6 +115,7 @@ class View extends JFrame {
     buttonPanel.add(openButton);
     buttonPanel.add(undoButton);
     buttonPanel.add(redoButton);
+    buttonPanel.add(polygonButton);
     this.setSize(600, 400);
   }
   public void refresh() {
