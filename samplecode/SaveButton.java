@@ -5,6 +5,7 @@ public class SaveButton  extends JButton implements ActionListener {
   private final UndoManager undoManager;
   public SaveButton(UndoManager undoManager, View jFrame) {
     super("Save");
+    setToolTipText("Save the drawing to a file");
     this.undoManager = undoManager;
     addActionListener(this);
     view = jFrame;

@@ -9,6 +9,7 @@ public class LineButton  extends JButton implements ActionListener {
   private UndoManager undoManager;
   public LineButton(UndoManager undoManager, View jFrame, JPanel jPanel) {
     super("Line");
+    setToolTipText("Click two points on the canvas to draw a line");
     this.undoManager = undoManager;
     addActionListener(this);
     view = jFrame;
@@ -19,7 +20,8 @@ public class LineButton  extends JButton implements ActionListener {
     view.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
     // Change cursor when button is clicked
     drawingPanel.addMouseListener(mouseHandler);
-  // Start listening for mouseclicks on the drawing panel
+    drawingPanel.addMouseMotionListener(mouseHandler);
+  // Start listening for mouseclicks and movement on the drawing panel
   }
   private class MouseHandler extends MouseAdapter {
     private int pointCount = 0;
@@ -31,8 +33,15 @@ public class LineButton  extends JButton implements ActionListener {
         pointCount = 0;
         lineCommand.setLinePoint(View.mapPoint(event.getPoint()));
         drawingPanel.removeMouseListener(this);
+        drawingPanel.removeMouseMotionListener(this);
         view.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         undoManager.endCommand(lineCommand);
+      }
+    }
+    public void mouseMoved(MouseEvent event) {
+      if (pointCount == 1) {
+        // Stretch the line to follow the mouse until the second click
+        lineCommand.setPreview(View.mapPoint(event.getPoint()));
       }
     }
   }

@@ -10,6 +10,7 @@ public class LabelButton  extends JButton implements ActionListener {
   private UndoManager undoManager;
   public LabelButton(UndoManager undoManager, View jFrame, JPanel jPanel) {
     super("Label");
+    setToolTipText("Click where the text goes, type it, then press Enter");
     this.undoManager = undoManager;
     keyHandler = new KeyHandler();
     addActionListener(this);

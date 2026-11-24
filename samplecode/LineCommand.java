@@ -21,6 +21,12 @@ public class LineCommand extends Command {
       line.setPoint2(point);
     }
   }
+  public void setPreview(Point point) {
+    if (pointCount == 1) {
+      line.setPoint2(point);
+      model.setChanged();
+    }
+  }
   public void execute() {
     model.addItem(line);
   }

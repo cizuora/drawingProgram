@@ -11,6 +11,7 @@ public class PolygonButton extends JButton implements ActionListener {
 
     public PolygonButton(UndoManager undoManager, View jFrame, JPanel jPanel) {
         super("Polygon");
+        setToolTipText("Left-click each corner; right-click to finish");
         this.undoManager = undoManager;
         addActionListener(this);
         view = jFrame;

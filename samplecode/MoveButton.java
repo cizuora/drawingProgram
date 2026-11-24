@@ -9,6 +9,7 @@ public class MoveButton extends JButton implements ActionListener {
   private final UndoManager undoManager;
   public MoveButton(UndoManager undoManager, View jFrame, JPanel jPanel) {
     super("Move");
+    setToolTipText("Drag to move the selected shapes");
     this.undoManager = undoManager;
     addActionListener(this);
     view = jFrame;

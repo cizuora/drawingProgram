@@ -5,6 +5,7 @@ public class OpenButton  extends JButton implements ActionListener {
   private final UndoManager undoManager;
   public OpenButton(UndoManager undoManager, View jFrame) {
     super("Open");
+    setToolTipText("Open a saved drawing from a file");
     this.undoManager = undoManager;
     addActionListener(this);
     this.view = jFrame;

@@ -11,6 +11,7 @@ public class CircleButton extends JButton implements ActionListener {
 
     public CircleButton(UndoManager undoManager, View jFrame, JPanel jPanel) {
         super("Circle");
+        setToolTipText("Click the center, then click a point on the edge");
         this.undoManager = undoManager;
         addActionListener(this);
         view = jFrame;

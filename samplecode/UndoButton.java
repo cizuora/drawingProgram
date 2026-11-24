@@ -4,6 +4,7 @@ public class UndoButton  extends JButton implements ActionListener {
   private final UndoManager undoManager;
   public UndoButton(UndoManager undoManager) {
     super("Undo");
+    setToolTipText("Undo the last action");
     this.undoManager = undoManager;
     addActionListener(this);
   }

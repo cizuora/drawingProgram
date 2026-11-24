@@ -5,6 +5,7 @@ public class DeleteButton  extends JButton implements ActionListener {
   private UndoManager undoManager;
   public DeleteButton(UndoManager undoManager) {
     super("Delete");
+    setToolTipText("Delete the selected shapes");
     this.undoManager = undoManager;
     addActionListener(this);
   }
