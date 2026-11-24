@@ -49,7 +49,6 @@ public class PolygonButton extends JButton implements ActionListener {
             else {
                 polygonCommand.addPoint(View.mapPoint(event.getPoint()));
             }
-            polygonCommand.addPoint(View.mapPoint(event.getPoint()));
         }
     }
 }

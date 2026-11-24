@@ -5,9 +5,8 @@ public class PolygonCommand extends Command {
     private int pointCount;
 
     public PolygonCommand(Point point) {
-        polygon = new Polygon(point);
+        polygon = new Polygon(point); // Polygon's constructor already stores the first point
         if (point != null) {
-            polygon.addPoint(point);
             pointCount = 1;
         } else {
             pointCount = 0;
@@ -40,6 +39,8 @@ public class PolygonCommand extends Command {
             undo();
             return false;
         }
+        polygon.close(); // Finished: draw the closing edge and allow selection by clicking inside
+        model.setChanged();
         return true;
     }
 }

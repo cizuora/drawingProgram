@@ -43,10 +43,12 @@ public class Polygon extends Item {
         if (points.length < 2) {
             return; // Not enough points to draw a polygon
         }
-        for (int i = 0; i < points.length; i++) {
-            Point p1 = points[i];
-            Point p2 = points[(i + 1) % points.length];
-            uiContext.drawLine(p1, p2);
+        for (int i = 0; i < points.length - 1; i++) {
+            uiContext.drawLine(points[i], points[i + 1]);
+        }
+        if (isClosed) {
+            // Closing edge from the last point back to the first
+            uiContext.drawLine(points[points.length - 1], points[0]);
         }
     }
 
